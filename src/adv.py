@@ -1,3 +1,4 @@
+from langparser import LangParser
 from room import Room
 from player import Player
 
@@ -40,6 +41,15 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
+name = input("Welcome to the land of Nod, adventurer. What is your name?")
+adventurer = Player(name, room["outside"])
+print(f'Welcome to the Dungeon of Dread {adventurer.name}!')
+
+# Initialize some stuff
+
+lp = LangParser()
+current_room = Room(adventurer.room.title, adventurer.room.description)
+
 # Write a loop that:
 #
 # * Prints the current room name
@@ -50,4 +60,6 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-# TODO: Print out list of items in a room
+
+while True:
+    pass
