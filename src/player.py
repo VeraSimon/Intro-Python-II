@@ -3,11 +3,10 @@
 
 
 class Player():
-    def __init__(self, name, x, y):
+    def __init__(self, name, room):
         self.items = []
         self.name = name
-        self.x = x
-        self.y = y
+        self.room = room
 
     def move(self):
         pass
