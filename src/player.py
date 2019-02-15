@@ -35,6 +35,7 @@ class Player():
             print("You have the following items:")
             for item in self.items:
                 print(f"{item.name} ({item.description})")
+            print("\n")
         else:
             print("You are not carrying anything.\n")
 
@@ -50,6 +51,12 @@ class Player():
             print(f"There's no {item} around here...\n")
 
     def on_drop(self, item):
-        if item in self.items:
-            self.room.items.append(item)
-            self.items.pop(self.items.index(item))
+        index = -1
+        for i, val in enumerate(self.items):
+            if val.name == item:
+                index = i
+                self.room.items.append(val)
+        if index > -1:
+            self.items.pop(i)
+        else:
+            print(f"There's no {item} in your inventory...\n")

@@ -14,7 +14,7 @@ class Room():
             item_col = "a " + self.items[0].name
         elif len(self.items) > 1:
             i_names = list(map(lambda nm: nm.name, self.items))
-            item_col = 'a ' + 'and '.join(i_names)
+            item_col = 'a ' + ' and '.join(i_names)
         else:
             item_col = "nothing"
 
