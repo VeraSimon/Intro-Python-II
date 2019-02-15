@@ -3,17 +3,18 @@
 
 
 class Room():
-    def __init__(self, title, description):
+    def __init__(self, title, description, items):
         self.title = title
         self.description = description
-        self.items = []  # list of items
+        self.items = items
 
     def __str__(self):
         item_col = ""
         if len(self.items) == 1:
-            item_col = "a " + self.items
+            item_col = "a " + self.items[0].name
         elif len(self.items) > 1:
-            item_col = ', '.join(self.items)
+            i_names = list(map(lambda nm: nm.name, self.items))
+            item_col = 'a ' + 'and '.join(i_names)
         else:
             item_col = "nothing"
 
@@ -29,4 +30,4 @@ class Room():
         elif direction == "w_to":
             return self.w_to
         else:
-            return (self.title, self.description)
+            return (self.title, self.description, self.items)

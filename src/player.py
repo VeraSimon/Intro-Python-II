@@ -1,4 +1,3 @@
-from room import Room
 # Write a class to hold player information, e.g. what room they are in
 # currently.
 
@@ -12,9 +11,10 @@ class Player():
     def __str__(self):
         item_col = ""
         if len(self.items) == 1:
-            item_col = "a " + self.items
+            item_col = "a " + self.items[0].name
         elif len(self.items) > 1:
-            item_col = ', '.join(self.items)
+            i_names = list(map(lambda nm: nm.name, self.items))
+            item_col = 'a ' + 'and '.join(i_names)
         else:
             item_col = "nothing"
 
@@ -29,3 +29,10 @@ class Player():
             print("\n")
         else:
             print("There's nowhere to go in that direction...\n")
+
+    def inventory_list(self):
+        if len(self.items) > 0:
+            for item in self.items:
+                print(f"{item.name} ({item.description})")
+        else:
+            print("You are not carrying anything.\n")

@@ -1,18 +1,12 @@
 class LangParser:
     def __init__(self, player):
-        # TODO: Map each entry in the dic to actions
         self.player = player
         self.dic = {
-            "g": "",  # grab
-            "grab": "",  # grab
-            "take": "",  # grab
-            "d": "",  # drop
-            "drop": "",  # drop
-            "i": self.player_inv,  # inventory
-            "inventory": self.player_inv,  # inventory
+            "i": self.player.inventory_list,  # inventory
+            "inventory": self.player.inventory_list,  # inventory
             "description": self.room_desc,  # describes the current room
-            "h": "",  # help
-            "help": "",  # help
+            "h": self.game_help,  # help
+            "help": self.game_help,  # help
             "q": self.quit_game,  # quit
             "quit": self.quit_game  # quit
         }
@@ -50,11 +44,13 @@ class LangParser:
         else:
             print("I don't understand that...\n")
 
-    def player_inv(self):
-        print(self.player)
-
     def room_desc(self):
+        # Just a drop-through to let the player get the room info without the accompanying "I don't understand that..."
         print("\n")
+
+    def game_help(self):
+        for k, v in self.help.items():
+            print(f"{k}: {v}")
 
     def quit_game(self):
         quit()
