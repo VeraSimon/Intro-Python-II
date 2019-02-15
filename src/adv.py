@@ -47,12 +47,6 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-# Room items
-# room['outside'].items = [items['lantern']]
-# room['foyer'].items = [items['dagger']]
-# room['overlook'].items = [items['flint']]
-# room['treasure'].items = [items['potion'], items['key']]
-
 #
 # Main
 #
@@ -63,7 +57,7 @@ name = input(f"Welcome to the land of Nod, adventurer. What is your name?\n>")
 adventurer = Player(name, room["outside"])
 print(f'\nWelcome to the Dungeon of Dread, {adventurer.name}!')
 
-# Initialize some stuff
+# Initialize the language parser
 lnp = LangParser(adventurer)
 
 # Write a loop that:

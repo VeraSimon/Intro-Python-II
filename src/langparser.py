@@ -1,3 +1,6 @@
+import re
+
+
 class LangParser:
     def __init__(self, player):
         self.player = player
@@ -33,12 +36,15 @@ class LangParser:
         cnt_input = input("What would you like to do? ")
 
         if cnt_input == "n" or cnt_input == "e" or cnt_input == "s" or cnt_input == "w":
-            # print(self.player.room[cnt_input + " to"])
             self.player.move(cnt_input + "_to")
-        elif cnt_input == "g" or cnt_input == "grab" or cnt_input == "take":
-            pass
-        elif cnt_input == "d" or cnt_input == "drop":
-            pass
+        elif re.match("g", cnt_input) or re.match("grab", cnt_input) or re.match("take", cnt_input):
+            item = cnt_input.split(' ')
+            if len(item) == 2:
+                self.player.on_take(item[1])
+        elif re.match("d", cnt_input) or re.match("drop", cnt_input):
+            item = cnt_input.split(' ')
+            if len(item) == 2:
+                self.player.on_drop(item[1])
         elif cnt_input in self.dic:
             return self.dic[cnt_input]()
         else:

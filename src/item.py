@@ -7,8 +7,5 @@ class Item:
     def __str__(self):
         return f'{self.name} ({self.description})'
 
-    def on_take(self, room):
-        pass
-
-    def on_drop(self, player):
-        pass
+    def __getitem__(self, direction):
+        return (self.name, self.description, self.loot_type)
