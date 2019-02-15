@@ -6,7 +6,7 @@ from player import Player
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                     "North of you, the cave mount beckons."),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),
@@ -41,14 +41,12 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
-name = input("Welcome to the land of Nod, adventurer. What is your name?")
+name = input(f"Welcome to the land of Nod, adventurer. What is your name?\n>")
 adventurer = Player(name, room["outside"])
-print(f'Welcome to the Dungeon of Dread {adventurer.name}!')
+print(f'\nWelcome to the Dungeon of Dread {adventurer.name}!')
 
 # Initialize some stuff
-
-lp = LangParser()
-current_room = Room(adventurer.room.title, adventurer.room.description)
+lnp = LangParser(adventurer)
 
 # Write a loop that:
 #
@@ -60,6 +58,6 @@ current_room = Room(adventurer.room.title, adventurer.room.description)
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-
 while True:
-    pass
+    print(Room(adventurer.room.title, adventurer.room.description))
+    lnp.control_parse()

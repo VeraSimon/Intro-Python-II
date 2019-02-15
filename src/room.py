@@ -21,4 +21,4 @@ class Room():
         else:
             item_col = "nothing"
 
-        return(f'You have entered the {self.title}.\n{self.description}\n\nThere is {item_col} in here.')
+        return(f'You have entered the {self.title}. {self.description}\nThere is {item_col} in here.\n')
