@@ -1,3 +1,4 @@
+from room import Room
 # Write a class to hold player information, e.g. what room they are in
 # currently.
 
@@ -19,5 +20,12 @@ class Player():
 
         return(f'You currently have {item_col}.\n')
 
-    def move(self):
-        pass
+    def move(self, direction):
+        # print(f"dir: {direction}")
+        # new_room = self.room[direction]
+        # print(f"new room: {new_room}")
+        if hasattr(self.room, direction):
+            self.room = self.room[direction]
+            print("\n")
+        else:
+            print("There's nowhere to go in that direction...\n")

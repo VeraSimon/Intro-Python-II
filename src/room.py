@@ -7,10 +7,6 @@ class Room():
         self.title = title
         self.description = description
         self.items = []  # list of items
-        self.n_to = {}
-        self.e_to = {}
-        self.s_to = {}
-        self.w_to = {}
 
     def __str__(self):
         item_col = ""
@@ -22,3 +18,15 @@ class Room():
             item_col = "nothing"
 
         return(f'You have entered the {self.title}. {self.description}\nThere is {item_col} in here.\n')
+
+    def __getitem__(self, direction):
+        if direction == "n_to":
+            return self.n_to
+        elif direction == "e_to":
+            return self.e_to
+        elif direction == "s_to":
+            return self.s_to
+        elif direction == "w_to":
+            return self.w_to
+        else:
+            return (self.title, self.description)

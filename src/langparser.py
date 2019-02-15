@@ -3,24 +3,19 @@ class LangParser:
         # TODO: Map each entry in the dic to actions
         self.player = player
         self.dic = {
-            "n": "Moves north",  # north
-            "e": "Moves east",  # east
-            "s": "Moves south",  # south
-            "w": "Moves west",  # west
             "g": "",  # grab
             "grab": "",  # grab
             "take": "",  # grab
             "d": "",  # drop
             "drop": "",  # drop
-            "i": "",  # inventory
-            "inventory": "",  # inventory
-            "description": "",  # describes the current room
+            "i": self.player_inv,  # inventory
+            "inventory": self.player_inv,  # inventory
+            "description": self.room_desc,  # describes the current room
             "h": "",  # help
             "help": "",  # help
             "q": self.quit_game,  # quit
             "quit": self.quit_game  # quit
         }
-
         self.help = {
             "n": "Moves north if possible",
             "e": "Moves east if possible",
@@ -42,8 +37,10 @@ class LangParser:
 
     def control_parse(self):
         cnt_input = input("What would you like to do? ")
+
         if cnt_input == "n" or cnt_input == "e" or cnt_input == "s" or cnt_input == "w":
-            self.move(cnt_input + " to")
+            # print(self.player.room[cnt_input + " to"])
+            self.player.move(cnt_input + "_to")
         elif cnt_input == "g" or cnt_input == "grab" or cnt_input == "take":
             pass
         elif cnt_input == "d" or cnt_input == "drop":
@@ -53,10 +50,11 @@ class LangParser:
         else:
             print("I don't understand that...\n")
 
-    def move(self, direction):
-        cur_room = self.player.room
-        if hasattr(cur_room, direction):
-            self.player.room = cur_room[direction]
+    def player_inv(self):
+        print(self.player)
+
+    def room_desc(self):
+        print("\n")
 
     def quit_game(self):
         quit()
